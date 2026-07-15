@@ -1,155 +1,517 @@
 <!doctype html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pillar — Planes y Precios</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--s:#F9F9F9;--c:#1F2227;--i:#9079ED;--w:#FFFFFF;--g1:#F3F4F6;--g2:#E5E7EB;--g3:#D1D5DB;--g4:#9CA3AF;--g5:#6B7280;--g:#30B77F;--sh:0 8px 32px rgba(31,34,39,0.08);--r:16px;--t:0.3s cubic-bezier(0.4,0,0.2,1)}
-html{scroll-behavior:smooth}
-body{font-family:'Space Grotesk',sans-serif;background:var(--s);color:var(--c);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.hero{display:flex;align-items:center;justify-content:space-between;gap:40px;max-width:1100px;margin:0 auto;padding:72px 24px 64px}
-.hc{flex:1;min-width:0}
-.hl{flex:0 0 650px;max-width:650px;margin-right:-180px}
-.logo{margin-bottom:32px}
-.hero h1{font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:16px;max-width:600px}
-.hero p{font-size:20px;color:var(--g5);max-width:520px;margin:0 0 24px;font-weight:300}
-.vps{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
-.vp{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--g5)}
-.vp svg{width:18px;height:18px;color:var(--g);flex-shrink:0}
-.tw{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:48px;flex-wrap:wrap}
-.tl{font-size:16px;font-weight:500;color:var(--g4);cursor:pointer;transition:color var(--t);user-select:none}
-.tl.active{color:var(--c)}
-.tt{position:relative;width:56px;height:30px;background:var(--g2);border-radius:15px;cursor:pointer;transition:background var(--t)}
-.tt.annual{background:var(--i)}
-.th{position:absolute;top:3px;left:3px;width:24px;height:24px;background:var(--w);border-radius:50%;transition:transform var(--t);box-shadow:0 1px 2px rgba(31,34,39,0.04)}
-.tt.annual .th{transform:translateX(26px)}
-.tbadge{display:inline-flex;align-items:center;gap:4px;background:rgba(144,121,237,0.1);color:var(--i);font-size:13px;font-weight:600;padding:4px 10px;border-radius:20px}
-.ph{text-align:center;font-size:clamp(20px,2.5vw,26px);font-weight:600;margin:0 0 20px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;padding:0 24px;align-items:stretch}
-.card{background:var(--w);border-radius:var(--r);border:1px solid var(--g2);padding:36px 32px;position:relative;transition:transform var(--t),box-shadow var(--t);display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:var(--sh)}
-.card.featured{border:2px solid var(--i);box-shadow:var(--sh);transform:scale(1.03)}
-.card.featured:hover{transform:scale(1.03) translateY(-4px)}
-.badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--i);color:white;font-size:12px;font-weight:600;padding:5px 20px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap}
-.tier{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--g4);margin-bottom:16px}
-.card.featured .tier{color:var(--i)}
-.pw{margin-bottom:6px;min-height:54px;display:flex;align-items:baseline;gap:4px}
-.cur{font-size:30px;font-weight:600}
-.pr{font-size:52px;font-weight:700;line-height:1}
-.per{font-size:17px;color:var(--g4);font-weight:400}
-.pn{font-size:14px;color:var(--g4);margin-bottom:10px}
-.orig{text-decoration:line-through;color:var(--g3);font-size:14px;font-weight:500}
-.div{height:1px;background:var(--g2);margin:24px 0}
-.st{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--g4);margin-bottom:14px;margin-top:24px}
-.st:first-of-type{margin-top:0}
-.fl{list-style:none}
-.fl li{display:flex;align-items:flex-start;gap:10px;padding:6px 0;font-size:15px}
-.fl li.dis{color:var(--g4);text-decoration:line-through;text-decoration-color:var(--g3)}
-.fi{flex-shrink:0;width:20px;height:20px;margin-top:1px}
-.fi.check{color:var(--g)}
-.fi.cross{color:var(--g3)}
-.card.featured .fi.check{color:var(--i)}
-.afs{max-width:1100px;margin:0 auto 24px;padding:0 24px}
-.afb{background:var(--w);border:1px solid var(--g2);border-radius:10px;padding:14px 18px}
-.afc{font-size:17px;font-weight:500;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px}
-.afp{font-size:52px;font-weight:700}
-.cs{max-width:1100px;margin:80px auto 0;padding:0 24px 80px}
-.ch{text-align:center;margin-bottom:48px}
-.ch h2{font-size:clamp(24px,3vw,32px);font-weight:700;margin-bottom:12px}
-.ch p{font-size:17px;color:var(--g5);font-weight:300}
-.ctw{background:var(--w);border-radius:var(--r);border:1px solid var(--g2);overflow:hidden}
-.ct{width:100%;border-collapse:collapse}
-.ct thead th{font-size:15px;font-weight:600;padding:20px 24px;text-align:center;border-bottom:2px solid var(--g2);background:var(--s)}
-.ct thead th:first-child{text-align:left;width:40%}
-.ct tbody tr{border-bottom:1px solid var(--g1);transition:background var(--t)}
-.ct tbody tr:hover{background:var(--s)}
-.ct tbody tr.sr{background:var(--s)}
-.ct tbody tr.sr td{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--g4);padding:14px 24px 10px}
-.ct td{padding:14px 24px;font-size:15px;text-align:center}
-.ct td:first-child{text-align:left;color:var(--g5)}
-.tcheck{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(48,183,127,0.1)}
-.tcheck svg{width:14px;height:14px;color:var(--g)}
-.tcross{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(220,41,41,0.08)}
-.tcross svg{width:12px;height:12px;color:var(--g3)}
-.tv{font-weight:600;font-size:15px}
-.fc{background:rgba(144,121,237,0.04)}
-footer{text-align:center;padding:40px 24px;border-top:1px solid var(--g2)}
-footer p{font-size:14px;color:var(--g4)}
-@keyframes fiu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.animate{animation:fiu 0.5s ease-out forwards;opacity:0}
-.animate:nth-child(1){animation-delay:0.1s}
-.animate:nth-child(2){animation-delay:0.2s}
-.animate:nth-child(3){animation-delay:0.3s}
-@media(max-width:900px){
-.hero{flex-direction:column;text-align:center;padding:48px 16px 32px}
-.hl{display:none}
-.grid{grid-template-columns:1fr;padding:0 16px}
-.card.featured{transform:scale(1);order:-1}
-.ctw{overflow-x:auto}
-.ct{min-width:500px}
-.vps{grid-template-columns:1fr}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pillar — Planes y Precios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --seasalt:#F9F9F9;--carbon:#1F2227;--coral:#FC9090;--indigo:#9079ED;--white:#FFFFFF;
+      --grey-100:#F3F4F6;--grey-200:#E5E7EB;--grey-300:#D1D5DB;--grey-400:#9CA3AF;--grey-500:#6B7280;
+      --green:#30B77F;--coral-light:rgba(252,144,144,0.08);--indigo-light:rgba(144,121,237,0.08);
+      --shadow-sm:0 1px 2px rgba(31,34,39,0.04);--shadow-md:0 4px 16px rgba(31,34,39,0.06);
+      --shadow-lg:0 8px 32px rgba(31,34,39,0.08);--shadow-xl:0 16px 48px rgba(31,34,39,0.12);
+      --radius:16px;--radius-sm:10px;--transition:0.3s cubic-bezier(0.4,0,0.2,1)
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Space Grotesk',sans-serif;background:var(--seasalt);color:var(--carbon);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    .hero{display:flex;align-items:center;justify-content:space-between;gap:40px;max-width:1100px;margin:0 auto;padding:72px 24px 64px;overflow:visible}
+    .hero-content{flex:1;min-width:0}
+    .hero-lottie{flex:0 0 650px;max-width:650px;margin-right:-180px}
+    .hero-lottie lottie-player{width:100%}
+    img,lottie-player{max-width:100%}
+    .hero-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:32px}
+    .hero h1{font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:16px;max-width:600px}
+    .hero p{font-size:20px;color:var(--grey-500);max-width:520px;margin:0 0 24px;font-weight:300}
+    .value-props{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+    .value-prop{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--grey-500)}
+    .value-prop svg{width:18px;height:18px;color:var(--green);flex-shrink:0}
+
+    /* OFFER PILL */
+    .hero-logo .offer-pill{
+      display:none;align-items:center;gap:6px;
+      background:rgba(252,144,144,0.12);color:var(--carbon);
+      border:1px solid rgba(252,144,144,0.3);
+      font-size:20px!important;font-weight:600!important;
+      font-family:'Space Grotesk',sans-serif!important;line-height:1!important;
+      text-transform:none;letter-spacing:0.06em;
+      padding:8px 16px!important;border-radius:999px;margin-left:10px;white-space:nowrap
+    }
+    .hero-logo .offer-pill .offer-timer{font-size:20px!important;font-weight:600!important;color:var(--coral)!important;font-family:'Space Grotesk',sans-serif!important;line-height:1!important}
+
+    /* OFFER BANNER */
+    .offer-banner{max-width:640px;margin:8px auto 28px;padding:0 24px;display:none}
+    .offer-inner{background:rgba(252,144,144,0.08);border:1px solid rgba(252,144,144,0.25);border-radius:var(--radius-sm);padding:10px 8px;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;text-align:center}
+    .offer-inner p{font-size:13px;color:var(--carbon);font-weight:600}
+    .offer-timer{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--coral);margin-left:6px}
+    .discount-badge{position:absolute;top:-14px;right:-6px;background:var(--coral);color:var(--white);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 10px;border-radius:999px;white-space:nowrap;box-shadow:var(--shadow-sm)}
+    [data-discount-badge]{display:none}
+    body.offer-active .offer-banner{display:block}
+    body.offer-active [data-discount-badge],.offer-pill{display:inline-flex}
+    body.offer-active .offer-pill{display:inline-flex}
+
+    /* PRICE ORIGINAL */
+    .price-original{font-size:16px;font-weight:600;color:var(--grey-400);text-decoration:line-through;margin-right:8px;display:none}
+    body.offer-active .price-original{display:inline}
+
+    /* TOGGLE */
+    .toggle-wrapper{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:48px;flex-wrap:wrap}
+    .toggle-label{font-size:16px;font-weight:500;color:var(--grey-400);cursor:pointer;transition:color var(--transition);user-select:none}
+    .toggle-label.active{color:var(--carbon)}
+    .toggle-track{position:relative;width:56px;height:30px;background:var(--grey-200);border-radius:15px;cursor:pointer;transition:background var(--transition)}
+    .toggle-track.annual{background:var(--indigo)}
+    .toggle-thumb{position:absolute;top:3px;left:3px;width:24px;height:24px;background:var(--white);border-radius:50%;transition:transform var(--transition);box-shadow:var(--shadow-sm)}
+    .toggle-track.annual .toggle-thumb{transform:translateX(26px)}
+    .toggle-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(144,121,237,0.1);color:var(--indigo);font-size:13px;font-weight:600;padding:4px 10px;border-radius:20px}
+    .pricing-heading{text-align:center;font-size:clamp(20px,2.5vw,26px);font-weight:600;margin:0 0 20px}
+
+    /* ACTIVATION */
+    .activation-fee-section{max-width:1100px;margin:0 auto 24px;padding:0 24px}
+    .activation-fee-box{background:var(--white);border:1px solid var(--grey-200);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:14px 18px}
+    .card-activation-fee{font-size:17px;font-weight:500;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;text-align:left;margin-bottom:0}
+    .activation-fee-price-group{display:inline-flex;align-items:baseline}
+    .activation-inline-original{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;margin-right:12px;display:none;text-decoration:line-through;color:var(--grey-400)}
+    body.offer-active .activation-inline-original{display:inline-block}
+    .activation-inline-current{font-family:'Space Grotesk',sans-serif;font-size:52px;line-height:1;font-weight:700;display:inline-block;vertical-align:baseline;margin-top:8px}
+
+    /* GRID */
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;padding:0 24px;align-items:stretch}
+    .pricing-card{background:var(--white);border-radius:var(--radius);border:1px solid var(--grey-200);padding:36px 32px;position:relative;transition:transform var(--transition),box-shadow var(--transition);display:flex;flex-direction:column}
+    .pricing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+    .pricing-card.featured{border:2px solid var(--indigo);box-shadow:var(--shadow-lg);transform:scale(1.03)}
+    .pricing-card.featured:hover{transform:scale(1.03) translateY(-4px);box-shadow:var(--shadow-xl)}
+    .card-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--indigo);color:white;font-size:12px;font-weight:600;padding:5px 20px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap}
+    .card-tier{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--grey-400);margin-bottom:16px}
+    .pricing-card.featured .card-tier{color:var(--indigo)}
+    .card-price-wrapper{margin-bottom:6px;min-height:54px;display:flex;align-items:baseline;gap:4px}
+    .card-price{font-size:52px;font-weight:700;line-height:1}
+    .card-price-currency{font-size:30px;font-weight:600}
+    .card-price-period{font-size:17px;color:var(--grey-400);font-weight:400}
+    .card-price-note{font-size:14px;color:var(--grey-400);margin-bottom:10px}
+    .card-price-original{text-decoration:line-through;color:var(--grey-300);font-size:14px;font-weight:500}
+    .card-divider{height:1px;background:var(--grey-200);margin:24px 0}
+    .card-section-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--grey-400);margin-bottom:14px;margin-top:24px}
+    .card-section-title:first-of-type{margin-top:0}
+    .feature-list{list-style:none}
+    .feature-list li{display:flex;align-items:flex-start;gap:10px;padding:6px 0;font-size:15px}
+    .feature-list li.disabled{color:var(--grey-400);text-decoration:line-through;text-decoration-color:var(--grey-300)}
+    .feature-icon{flex-shrink:0;width:20px;height:20px;margin-top:1px}
+    .feature-icon.check{color:var(--green)}.feature-icon.cross{color:var(--grey-300)}
+    .pricing-card.featured .feature-icon.check{color:var(--indigo)}
+
+    /* COMPARISON TABLE */
+    .comparison-section{max-width:1100px;margin:80px auto 0;padding:0 24px 80px}
+    .comparison-header{text-align:center;margin-bottom:48px}
+    .comparison-header h2{font-size:clamp(24px,3vw,32px);font-weight:700;margin-bottom:12px}
+    .comparison-header p{font-size:17px;color:var(--grey-500);font-weight:300}
+    .comparison-table-wrapper{background:var(--white);border-radius:var(--radius);border:1px solid var(--grey-200);overflow:hidden;box-shadow:var(--shadow-sm)}
+    .comparison-table{width:100%;border-collapse:collapse}
+    .comparison-table thead th{font-size:15px;font-weight:600;padding:20px 24px;text-align:center;border-bottom:2px solid var(--grey-200);background:var(--seasalt)}
+    .comparison-table thead th:first-child{text-align:left;width:40%}
+    .comparison-table tbody tr{border-bottom:1px solid var(--grey-100);transition:background var(--transition)}
+    .comparison-table tbody tr:hover{background:var(--seasalt)}
+    .comparison-table tbody tr.section-row{background:var(--seasalt)}
+    .comparison-table tbody tr.section-row td{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--grey-400);padding:14px 24px 10px}
+    .comparison-table td{padding:14px 24px;font-size:15px;text-align:center;color:var(--carbon)}
+    .comparison-table td:first-child{text-align:left;color:var(--grey-500)}
+    .comparison-table td.featured-col{background:transparent}
+    .table-check{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(48,183,127,0.1)}
+    .table-check svg{width:14px;height:14px;color:var(--green)}
+    .table-cross{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(220,41,41,0.08)}
+    .table-cross svg{width:12px;height:12px;color:var(--grey-300)}
+    .table-value{font-weight:600;font-size:15px}
+
+    /* FOOTER */
+    .page-footer{text-align:center;padding:40px 24px;border-top:1px solid var(--grey-200)}
+    .page-footer p{font-size:14px;color:var(--grey-400)}
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .animate-in{animation:fadeInUp 0.5s ease-out forwards;opacity:0}
+    .animate-in:nth-child(1){animation-delay:0.1s}.animate-in:nth-child(2){animation-delay:0.2s}.animate-in:nth-child(3){animation-delay:0.3s}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero{flex-direction:column;text-align:center;padding:48px 16px 32px}
+      .hero-lottie{display:none}
+      .pricing-grid{grid-template-columns:1fr;padding:0 16px}
+      .pricing-card.featured{transform:scale(1);order:-1}
+      .value-props{grid-template-columns:1fr}
+      .comparison-table-wrapper{overflow-x:auto}
+      .comparison-table{min-width:600px}
+    }
+  </style>
 </head>
 <body>
+
 <section class="hero">
-<div class="hc">
-<div class="logo"><img src="https://49412696.hs-sites.com/hubfs/Pillar%20Logo%20Full%20Bleed%20(2).png" alt="Pillar" style="height:48px;width:auto"></div>
-<h1>Pillar es la solución completa para gestionar tu empresa constructora</h1>
-<p>Todas las herramientas que necesitas para gestionar obras, costes y márgenes en una sola plataforma.</p>
-<div class="vps"><div class="vp"><svg viewBox="0 0 20 20" fill="none"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/></svg>Asistente WhatsApp incluido</div><div class="vp"><svg viewBox="0 0 20 20" fill="none"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/></svg>Actualizaciones y mantenimiento incluidos</div><div class="vp"><svg viewBox="0 0 20 20" fill="none"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/></svg>Precios finales, cero costes ocultos</div><div class="vp"><svg viewBox="0 0 20 20" fill="none"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/></svg>Compatible con tablet y ordenador</div></div>
-</div>
-<div class="hl"><lottie-player src="https://49412696.hs-sites.com/hubfs/Dashboard%20Lottie.json" background="transparent" speed="1" loop autoplay></lottie-player></div>
+  <div class="hero-content">
+    <div class="hero-logo">
+      <img id="offer-trigger" src="https://49412696.hs-sites.com/hubfs/Pillar%20Logo%20Full%20Bleed%20(2).png" alt="Pillar" style="height:48px;width:auto;cursor:pointer;">
+      <span class="offer-pill" id="offer-pill">Promo limitada <span class="offer-timer" id="offer-timer-inline">24:00:00</span></span>
+    </div>
+    <h1>Pillar es la solución completa para gestionar tu empresa constructora</h1>
+    <p>Todas las herramientas que necesitas para gestionar obras, costes y márgenes en una sola plataforma.</p>
+    <div class="value-props">
+      <div class="value-prop"><svg viewBox="0 0 20 20" fill="none"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/></svg>Asistente WhatsApp incluido</div>
+      <div class="value-prop"><svg viewBox="0 0 20 20" fill="none"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/></svg>Actualizaciones y mantenimiento incluidos</div>
+      <div class="value-prop"><svg viewBox="0 0 20 20" fill="none"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/></svg>Precios finales, cero costes ocultos</div>
+      <div class="value-prop"><svg viewBox="0 0 20 20" fill="none"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/></svg>Compatible con tablet y ordenador</div>
+    </div>
+  </div>
+  <div class="hero-lottie">
+    <lottie-player src="https://49412696.hs-sites.com/hubfs/Dashboard%20Lottie.json" background="transparent" speed="1" loop autoplay></lottie-player>
+  </div>
 </section>
-<h2 class="ph">Elige la oferta más adecuada para tu empresa</h2>
-<div class="tw">
-<span class="tl active" id="lm">Mensual</span>
-<div class="tt" id="bt" role="switch" aria-checked="false" tabindex="0"><div class="th"></div></div>
-<span class="tl" id="la">Anual</span>
-<span class="tbadge"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>Ahorra hasta un 20%</span>
+
+<div class="offer-banner" id="offer-banner" aria-hidden="true">
+  <div class="offer-inner">
+    <span class="discount-badge" id="offer-badge">Oferta Especial</span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H9.5a2.5 2.5 0 1 1 0-5C11.5 2 12 7 12 7z"/><path d="M12 7h2.5a2.5 2.5 0 1 0 0-5C12.5 2 12 7 12 7z"/></svg>
+    <p>Promo limitada, válida durante: <span class="offer-timer" id="offer-timer">24:00:00</span></p>
+  </div>
 </div>
-<div class="afs"><div class="afb"><div class="afc"><span class="afl">Coste de Activación completa del perfil con onboarding personalizado</span><strong class="afp">€899</strong></div></div></div>
-<div class="grid"><div class="card animate">
 
-<div class="tier">Silver</div>
-<div class="pw"><span class="cur">€</span><span class="pr" data-m="249" data-a="199">249</span><span class="per">/mes</span></div>
-<div class="pn"><span class="an" style="display:none"><span class="orig">€249/mes</span> — compromiso 12 meses</span><span class="mn">compromiso 12 meses</span></div>
-<div class="div"></div>
-<div class="st">Usuarios</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios desde oficina: 1</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios por WhatsApp: 7</li></ul><div class="st">Formación</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Sesión de webinar de formación</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Chat en vivo 12/24h con nuestro equipo de soporte</li></ul><div class="st">Productos</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Módulo Obras</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Pillar AI básico</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Administración y finanzas</li></ul><div class="st">Incluido</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración de cuentas bancarias</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración fiscal</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>5 obras activas</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>20 presupuestos</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>10 GB de almacenamiento cloud</li><li class="dis"><svg class="fi cross" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>Acceso anticipado a nuevas funcionalidades</li><li class="dis"><svg class="fi cross" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>Sesiones 1:1 con el equipo de desarrollo</li></ul></div><div class="card animate featured">
-<div class="badge">EL MÁS POPULAR</div>
-<div class="tier">Gold</div>
-<div class="pw"><span class="cur">€</span><span class="pr" data-m="379" data-a="303">379</span><span class="per">/mes</span></div>
-<div class="pn"><span class="an" style="display:none"><span class="orig">€379/mes</span> — compromiso 12 meses</span><span class="mn">compromiso 12 meses</span></div>
-<div class="div"></div>
-<div class="st">Usuarios</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios desde oficina: 3</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios por WhatsApp: 20</li></ul><div class="st">Formación</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>1 hora/mes de soporte en videollamada individual</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Chat en vivo 12/24h con nuestro equipo de soporte</li></ul><div class="st">Productos</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Módulo Obras</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Pillar AI Premium</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Administración y finanzas</li></ul><div class="st">Incluido</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración de cuentas bancarias</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración fiscal</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>15 obras activas</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Presupuestos ilimitados</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>100 GB de almacenamiento cloud</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Acceso anticipado a nuevas funcionalidades</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Sesiones 1:1 con el equipo de desarrollo</li></ul></div><div class="card animate">
+<h2 class="pricing-heading">Elige la oferta más adecuada para tu empresa</h2>
+<div class="toggle-wrapper">
+  <span class="toggle-label active" id="label-monthly">Mensual</span>
+  <div class="toggle-track" id="billing-toggle" role="switch" aria-checked="false" tabindex="0"><div class="toggle-thumb"></div></div>
+  <span class="toggle-label" id="label-annual">Anual</span>
+  <span class="toggle-badge"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>Ahorra hasta un 20%</span>
+</div>
 
-<div class="tier">Platinum</div>
-<div class="pw"><span class="cur">€</span><span class="pr" data-m="649" data-a="519">649</span><span class="per">/mes</span></div>
-<div class="pn"><span class="an" style="display:none"><span class="orig">€649/mes</span> — compromiso 12 meses</span><span class="mn">compromiso 12 meses</span></div>
-<div class="div"></div>
-<div class="st">Usuarios</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios desde oficina: Ilimitados</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios por WhatsApp: Ilimitados</li></ul><div class="st">Formación</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Sesiones ilimitadas con un Account Manager dedicado</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Chat en vivo 12/24h con nuestro equipo de soporte</li></ul><div class="st">Productos</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Módulo Obras</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Pillar AI Premium con chat IA que conoce tu empresa</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Administración y finanzas</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Gestión de recuperación de créditos</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Soporte para el sitio web</li></ul><div class="st">Incluido</div><ul class="fl"><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración de cuentas bancarias</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración fiscal</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Obras ilimitadas</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Presupuestos ilimitados</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Almacenamiento cloud ilimitado</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Acceso anticipado a nuevas funcionalidades</li><li><svg class="fi check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Sesiones 1:1 con el equipo de desarrollo</li></ul></div></div>
-<section class="cs">
-<div class="ch"><h2>Comparativa completa de planes</h2><p>Todas las funcionalidades de un vistazo</p></div>
-<div class="ctw"><table class="ct">
-<thead><tr><th></th><th>Silver</th><th class="fc">Gold</th><th>Platinum</th></tr></thead>
-<tbody><tr class="sr"><td colspan="4">Usuarios</td></tr><tr><td>Usuarios desde oficina: 1</td><td><span class="tv">1</span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Usuarios por WhatsApp: 7</td><td><span class="tv">7</span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Usuarios desde oficina: 3</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tv">3</span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Usuarios por WhatsApp: 20</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tv">20</span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Usuarios desde oficina: Ilimitados</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tv">Ilimitados</span></td></tr><tr><td>Usuarios por WhatsApp: Ilimitados</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tv">Ilimitados</span></td></tr><tr class="sr"><td colspan="4">Formación</td></tr><tr><td>Sesión de webinar de formación</td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Chat en vivo 12/24h con nuestro equipo de soporte</td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>1 hora/mes de soporte en videollamada individual</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Sesiones ilimitadas con un Account Manager dedicado</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr class="sr"><td colspan="4">Productos</td></tr><tr><td>Módulo Obras</td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>Pillar AI básico</td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Administración y finanzas</td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>Pillar AI Premium</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Pillar AI Premium con chat IA que conoce tu empresa</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>Gestión de recuperación de créditos</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>Soporte para el sitio web</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr class="sr"><td colspan="4">Incluido</td></tr><tr><td>Integración de cuentas bancarias</td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>Integración fiscal</td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>5 obras activas</td><td><span class="tv">5 obras</span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>20 presupuestos</td><td><span class="tv">20</span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>10 GB de almacenamiento cloud</td><td><span class="tv">10 GB</span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Acceso anticipado a nuevas funcionalidades</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>Sesiones 1:1 con el equipo de desarrollo</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="tcheck"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr><tr><td>15 obras activas</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tv">15 obras</span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Presupuestos ilimitados</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tv">Ilimitados</span></td><td><span class="tv">Ilimitados</span></td></tr><tr><td>100 GB de almacenamiento cloud</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tv">100 GB</span></td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td></tr><tr><td>Obras ilimitadas</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tv">Ilimitadas</span></td></tr><tr><td>Almacenamiento cloud ilimitado</td><td><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="fc"><span class="tcross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="tv">Ilimitado</span></td></tr><tr class="sr"><td colspan="4">Precios</td></tr><tr><td>Precio mensual</td><td><span class="tv">€249</span></td><td class="fc"><span class="tv">€379</span></td><td><span class="tv">€649</span></td></tr><tr><td>Ahorro con plan anual</td><td><span class="tv" style="color:var(--g)">€600/año</span></td><td class="fc"><span class="tv" style="color:var(--g)">€912/año</span></td><td><span class="tv" style="color:var(--g)">€1560/año</span></td></tr></tbody>
-</table></div>
+<div class="activation-fee-section">
+  <div class="activation-fee-box">
+    <div class="card-activation-fee">
+      <span>Coste de Activación completa del perfil con onboarding personalizado</span>
+      <span class="activation-fee-price-group">
+        <span class="activation-inline-original">899€</span>
+        <strong class="activation-inline-current" data-orig-activation="899"><span class="activation-price-num">899</span><span>€</span></strong>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="pricing-grid">
+
+  <!-- SILVER -->
+  <div class="pricing-card animate-in" data-plan="silver">
+    <span class="discount-badge" data-discount-badge>DESCUENTO</span>
+    <div class="card-tier">Silver</div>
+    <div class="card-price-wrapper">
+      <span class="price-original" data-orig-label>299€</span>
+      <span class="card-price" data-monthly="299" data-annual="249" data-orig-monthly="299" data-orig-annual="249">299</span>
+      <span class="card-price-currency">€</span>
+      <span class="card-price-period">/mes</span>
+    </div>
+    <div class="card-price-note">
+      <span class="annual-note" style="display:none;"><span class="card-price-original">299€/mes</span> — compromiso 12 meses</span>
+      <span class="monthly-note">compromiso de 12 meses</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-section-title">Usuarios</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios desde oficina: 1</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios por WhatsApp: 7</li>
+    </ul>
+    <div class="card-section-title">Formación</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Sesión de webinar de formación</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Chat en vivo 12/24h con nuestro equipo de soporte</li>
+    </ul>
+    <div class="card-section-title">Productos</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Módulo Obras</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Pillar AI básico</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Administración y finanzas</li>
+    </ul>
+    <div class="card-section-title">Incluido</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración de cuentas bancarias</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración fiscal</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>5 obras activas</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>20 presupuestos</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>10 GB de almacenamiento cloud</li>
+      <li class="disabled"><svg class="feature-icon cross" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>Acceso anticipado a nuevas funcionalidades</li>
+      <li class="disabled"><svg class="feature-icon cross" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>Sesiones 1:1 con el equipo de desarrollo</li>
+    </ul>
+  </div>
+
+  <!-- GOLD -->
+  <div class="pricing-card featured animate-in" data-plan="gold">
+    <span class="discount-badge" data-discount-badge>DESCUENTO</span>
+    <div class="card-badge">EL MÁS POPULAR</div>
+    <div class="card-tier">Gold</div>
+    <div class="card-price-wrapper">
+      <span class="price-original" data-orig-label>379€</span>
+      <span class="card-price" data-monthly="379" data-annual="339" data-orig-monthly="379" data-orig-annual="339">379</span>
+      <span class="card-price-currency">€</span>
+      <span class="card-price-period">/mes</span>
+    </div>
+    <div class="card-price-note">
+      <span class="annual-note" style="display:none;"><span class="card-price-original">379€/mes</span> — compromiso 12 meses</span>
+      <span class="monthly-note">compromiso de 12 meses</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-section-title">Usuarios</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios desde oficina: 3</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios por WhatsApp: 20</li>
+    </ul>
+    <div class="card-section-title">Formación</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>1 hora/mes de soporte en videollamada individual</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Chat en vivo 12/24h con nuestro equipo de soporte</li>
+    </ul>
+    <div class="card-section-title">Productos</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Módulo Obras</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Pillar AI Premium</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Administración y finanzas</li>
+    </ul>
+    <div class="card-section-title">Incluido</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración de cuentas bancarias</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración fiscal</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>15 obras activas</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Presupuestos ilimitados</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>100 GB de almacenamiento cloud</li>
+      <li class="disabled"><svg class="feature-icon cross" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>Acceso anticipado a nuevas funcionalidades</li>
+      <li class="disabled"><svg class="feature-icon cross" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>Sesiones 1:1 con el equipo de desarrollo</li>
+    </ul>
+  </div>
+
+  <!-- PLATINUM -->
+  <div class="pricing-card animate-in" data-plan="platinum">
+    <span class="discount-badge" data-discount-badge>DESCUENTO</span>
+    <div class="card-tier">Platinum</div>
+    <div class="card-price-wrapper">
+      <span class="price-original" data-orig-label>649€</span>
+      <span class="card-price" data-monthly="649" data-annual="579" data-orig-monthly="649" data-orig-annual="579">649</span>
+      <span class="card-price-currency">€</span>
+      <span class="card-price-period">/mes</span>
+    </div>
+    <div class="card-price-note">
+      <span class="annual-note" style="display:none;"><span class="card-price-original">649€/mes</span> — compromiso 12 meses</span>
+      <span class="monthly-note">compromiso de 12 meses</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-section-title">Usuarios</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios desde oficina: Ilimitados</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Usuarios por WhatsApp: Ilimitados</li>
+    </ul>
+    <div class="card-section-title">Formación</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Sesiones ilimitadas con Account Manager dedicado</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Chat en vivo 12/24h con nuestro equipo de soporte</li>
+    </ul>
+    <div class="card-section-title">Productos</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Módulo Obras</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Pillar AI Premium con chat IA que conoce tu empresa</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Administración y finanzas</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Gestión de recuperación de créditos</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Soporte para el sitio web</li>
+    </ul>
+    <div class="card-section-title">Incluido</div>
+    <ul class="feature-list">
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración de cuentas bancarias</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integración fiscal</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Obras ilimitadas</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Presupuestos ilimitados</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Almacenamiento cloud ilimitado</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Acceso anticipado a nuevas funcionalidades</li>
+      <li><svg class="feature-icon check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Sesiones 1:1 con el equipo de desarrollo</li>
+    </ul>
+  </div>
+</div>
+
+<section class="comparison-section">
+  <div class="comparison-header">
+    <h2>Comparativa completa de planes</h2>
+    <p>Todas las funcionalidades de un vistazo</p>
+  </div>
+  <div class="comparison-table-wrapper">
+    <table class="comparison-table">
+      <thead><tr><th></th><th>Silver</th><th class="featured-col">Gold</th><th>Platinum</th></tr></thead>
+      <tbody>
+        <tr class="section-row"><td colspan="4">Usuarios</td></tr>
+        <tr><td>Usuarios desde oficina</td><td><span class="table-value">1</span></td><td class="featured-col"><span class="table-value">3</span></td><td><span class="table-value">Ilimitados</span></td></tr>
+        <tr><td>Usuarios por WhatsApp</td><td><span class="table-value">7</span></td><td class="featured-col"><span class="table-value">20</span></td><td><span class="table-value">Ilimitados</span></td></tr>
+        <tr class="section-row"><td colspan="4">Formación</td></tr>
+        <tr><td>Sesiones de formación</td><td><span class="table-value">Webinar única vez</span></td><td class="featured-col"><span class="table-value">1 hora/mes</span></td><td><span class="table-value">Ilimitadas</span></td></tr>
+        <tr><td>Account Manager dedicado</td><td><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="featured-col"><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr class="section-row"><td colspan="4">Productos</td></tr>
+        <tr><td>Módulo Obras</td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="featured-col"><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr><td>Pillar AI</td><td><span class="table-value">Básico</span></td><td class="featured-col"><span class="table-value">Premium</span></td><td><span class="table-value">Premium + chat IA</span></td></tr>
+        <tr><td>Administración y finanzas</td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="featured-col"><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr><td>Gestión de recuperación de créditos</td><td><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="featured-col"><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr><td>Soporte para el sitio web</td><td><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="featured-col"><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr class="section-row"><td colspan="4">Integraciones y Límites</td></tr>
+        <tr><td>Integración cuentas bancarias</td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="featured-col"><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr><td>Integración fiscal</td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td class="featured-col"><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr><td>Número de obras</td><td><span class="table-value">5 obras activas</span></td><td class="featured-col"><span class="table-value">15 obras activas</span></td><td><span class="table-value">Ilimitadas</span></td></tr>
+        <tr><td>Número de presupuestos</td><td><span class="table-value">20</span></td><td class="featured-col"><span class="table-value">Ilimitados</span></td><td><span class="table-value">Ilimitados</span></td></tr>
+        <tr><td>Almacenamiento cloud</td><td><span class="table-value">10 GB</span></td><td class="featured-col"><span class="table-value">100 GB</span></td><td><span class="table-value">Ilimitado</span></td></tr>
+        <tr class="section-row"><td colspan="4">Exclusivo</td></tr>
+        <tr><td>Acceso anticipado a nuevas funcionalidades</td><td><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="featured-col"><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr><td>Sesiones 1:1 con el equipo de desarrollo</td><td><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td class="featured-col"><span class="table-cross"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></span></td></tr>
+        <tr class="section-row"><td colspan="4">Precios</td></tr>
+        <tr><td>Precio mensual</td>
+          <td><span class="table-value table-price" data-plan="silver" data-monthly="299" data-annual="249" data-orig-monthly="299" data-orig-annual="249">299€</span></td>
+          <td class="featured-col"><span class="table-value table-price" data-plan="gold" data-monthly="379" data-annual="339" data-orig-monthly="379" data-orig-annual="339">379€</span></td>
+          <td><span class="table-value table-price" data-plan="platinum" data-monthly="649" data-annual="579" data-orig-monthly="649" data-orig-annual="579">649€</span></td>
+        </tr>
+        <tr><td>Ahorro con plan anual</td>
+          <td><span class="table-value" style="color:var(--green)">600€/año</span></td>
+          <td class="featured-col"><span class="table-value" style="color:var(--green)">480€/año</span></td>
+          <td><span class="table-value" style="color:var(--green)">840€/año</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
-<footer><p>© 2025 Pillar — La solución completa para gestionar tu empresa constructora. Todos los precios son más IVA.</p></footer>
+
+<footer class="page-footer">
+  <p>© 2025 Pillar — La solución completa para gestionar tu empresa constructora. Todos los precios son más IVA.</p>
+</footer>
+
 <script>
-const bt=document.getElementById('bt'),lm=document.getElementById('lm'),la=document.getElementById('la');
-const prs=document.querySelectorAll('.pr'),ans=document.querySelectorAll('.an'),mns=document.querySelectorAll('.mn');
-let isA=false;
-function anim(el,tgt){const cur=parseInt(el.textContent),diff=tgt-cur,steps=12,sd=25;let s=0;const iv=setInterval(()=>{s++;const e=1-Math.pow(1-s/steps,3);el.textContent=Math.round(cur+diff*e);if(s>=steps){el.textContent=tgt;clearInterval(iv);}},sd);}
-function upd(){prs.forEach(el=>anim(el,parseInt(isA?el.dataset.a:el.dataset.m)));ans.forEach(n=>n.style.display=isA?'inline':'none');mns.forEach(n=>n.style.display=isA?'none':'inline');if(isA){bt.classList.add('annual');la.classList.add('active');lm.classList.remove('active');}else{bt.classList.remove('annual');lm.classList.add('active');la.classList.remove('active');}}
-bt.addEventListener('click',()=>{isA=!isA;upd();});
-bt.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();isA=!isA;upd();}});
-lm.addEventListener('click',()=>{if(isA){isA=false;upd();}});
-la.addEventListener('click',()=>{if(!isA){isA=true;upd();}});
-const obs=new IntersectionObserver(en=>en.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running';}),{threshold:0.1});
-document.querySelectorAll('.animate').forEach(el=>obs.observe(el));
+  const toggle = document.getElementById('billing-toggle');
+  const labelMonthly = document.getElementById('label-monthly');
+  const labelAnnual = document.getElementById('label-annual');
+  const prices = document.querySelectorAll('.card-price');
+  const annualNotes = document.querySelectorAll('.annual-note');
+  const monthlyNotes = document.querySelectorAll('.monthly-note');
+  let isAnnual = false;
+  let offerActive = false;
+  let offerTimerInterval = null;
+
+  function animatePrice(el, target) {
+    const current = parseInt(el.textContent);
+    const diff = target - current;
+    const steps = 12, stepDuration = 25;
+    let step = 0;
+    const iv = setInterval(() => {
+      step++;
+      const e = 1 - Math.pow(1 - step/steps, 3);
+      el.textContent = Math.round(current + diff * e);
+      if (step >= steps) { el.textContent = target; clearInterval(iv); }
+    }, stepDuration);
+  }
+
+  function animateCurrencyValue(el, target) {
+    const numEl = el.querySelector('.activation-price-num') || el;
+    const current = parseInt((numEl.textContent||'').replace(/[^\d-]/g,''), 10);
+    if (isNaN(current)||isNaN(target)) { numEl.textContent = target; return; }
+    const diff = target - current, steps = 12, stepDuration = 25;
+    let step = 0;
+    const iv = setInterval(() => {
+      step++;
+      const e = 1 - Math.pow(1 - step/steps, 3);
+      numEl.textContent = Math.round(current + diff * e);
+      if (step >= steps) { numEl.textContent = target; clearInterval(iv); }
+    }, stepDuration);
+  }
+
+  function updatePricing() {
+    prices.forEach(el => animatePrice(el, parseInt(isAnnual ? el.dataset.annual : el.dataset.monthly)));
+    document.querySelectorAll('.table-price').forEach(el => {
+      el.textContent = (isAnnual ? el.dataset.annual : el.dataset.monthly) + '€';
+    });
+    annualNotes.forEach(n => n.style.display = isAnnual ? 'inline' : 'none');
+    monthlyNotes.forEach(n => n.style.display = isAnnual ? 'none' : 'inline');
+    if (isAnnual) { toggle.classList.add('annual'); labelAnnual.classList.add('active'); labelMonthly.classList.remove('active'); }
+    else { toggle.classList.remove('annual'); labelMonthly.classList.add('active'); labelAnnual.classList.remove('active'); }
+  }
+
+  toggle.addEventListener('click', () => { isAnnual = !isAnnual; updatePricing(); });
+  toggle.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();isAnnual=!isAnnual;updatePricing();} });
+  labelMonthly.addEventListener('click', () => { if(isAnnual){isAnnual=false;updatePricing();} });
+  labelAnnual.addEventListener('click', () => { if(!isAnnual){isAnnual=true;updatePricing();} });
+
+  function startOfferTimer() {
+    const timerEl = document.getElementById('offer-timer');
+    const timerInline = document.getElementById('offer-timer-inline');
+    if (offerTimerInterval) clearInterval(offerTimerInterval);
+    let remaining = 24 * 60 * 60;
+    const tick = () => {
+      const h = String(Math.floor(remaining/3600)).padStart(2,'0');
+      const m = String(Math.floor((remaining%3600)/60)).padStart(2,'0');
+      const s = String(remaining%60).padStart(2,'0');
+      if(timerEl) timerEl.textContent = `${h}:${m}:${s}`;
+      if(timerInline) timerInline.textContent = `${h}:${m}:${s}`;
+      if(remaining>0) remaining--;
+    };
+    tick();
+    offerTimerInterval = setInterval(tick, 1000);
+  }
+
+  function applyInternalOffer() {
+    if (offerActive) return;
+    offerActive = true;
+    document.body.classList.add('offer-active');
+    document.getElementById('offer-banner').setAttribute('aria-hidden','false');
+
+    const promoMonthly = { silver: 249, gold: 319, platinum: 549 };
+    const promoAnnual  = { silver: 186, gold: 288, platinum: 492 };
+
+    function planKey(origM) {
+      if(origM===299) return 'silver';
+      if(origM===379) return 'gold';
+      if(origM===649) return 'platinum';
+      return null;
+    }
+
+    document.querySelectorAll('.card-price').forEach(el => {
+      const k = planKey(parseInt(el.dataset.origMonthly));
+      if(k){ el.dataset.monthly = promoMonthly[k]; el.dataset.annual = promoAnnual[k]; }
+    });
+    document.querySelectorAll('[data-orig-label]').forEach(el => {
+      const card = el.closest('.pricing-card');
+      const priceEl = card ? card.querySelector('.card-price') : null;
+      if(priceEl && priceEl.dataset.origMonthly) el.textContent = priceEl.dataset.origMonthly + '€';
+    });
+    document.querySelectorAll('.table-price').forEach(el => {
+      const k = planKey(parseInt(el.dataset.origMonthly));
+      if(k){ el.dataset.monthly = promoMonthly[k]; el.dataset.annual = promoAnnual[k]; }
+    });
+    document.querySelectorAll('[data-discount-badge]').forEach(b => b.textContent = 'DESCUENTO 15%');
+    document.querySelectorAll('.activation-inline-current').forEach(el => animateCurrencyValue(el, 499));
+
+    updatePricing();
+    startOfferTimer();
+  }
+
+  function resetInternalOffer() {
+    offerActive = false;
+    document.body.classList.remove('offer-active');
+    document.getElementById('offer-banner').setAttribute('aria-hidden','true');
+    if(offerTimerInterval){ clearInterval(offerTimerInterval); offerTimerInterval=null; }
+
+    document.querySelectorAll('.card-price').forEach(el => {
+      if(el.dataset.origMonthly) el.dataset.monthly = el.dataset.origMonthly;
+      if(el.dataset.origAnnual) el.dataset.annual = el.dataset.origAnnual;
+    });
+    document.querySelectorAll('.table-price').forEach(el => {
+      if(el.dataset.origMonthly) el.dataset.monthly = el.dataset.origMonthly;
+      if(el.dataset.origAnnual) el.dataset.annual = el.dataset.origAnnual;
+    });
+    document.querySelectorAll('.activation-inline-current').forEach(el => animateCurrencyValue(el, 899));
+    updatePricing();
+  }
+
+  document.getElementById('offer-trigger').addEventListener('click', () => {
+    if(offerActive) resetInternalOffer(); else applyInternalOffer();
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.style.animationPlayState='running'; });
+  }, {threshold:0.1});
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
 </script>
 </body></html>
